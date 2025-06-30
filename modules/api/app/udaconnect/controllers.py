@@ -22,7 +22,7 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 
 @api.route("/locations")
 @api.route("/locations/<location_id>")
-@api.param("location_id", "Unique ID for a given Location", _in="query")
+# @api.param("location_id", "Unique ID for a given Location", _in="query")
 class LocationResource(Resource):
     @accepts(schema=LocationSchema)
     @responds(schema=LocationSchema)
@@ -53,7 +53,7 @@ class PersonsResource(Resource):
 
 
 @api.route("/persons/<person_id>")
-@api.param("person_id", "Unique ID for a given Person", _in="query")
+# @api.param("person_id", "Unique ID for a given Person", _in="query")
 class PersonResource(Resource):
     @responds(schema=PersonSchema)
     def get(self, person_id) -> Person:
