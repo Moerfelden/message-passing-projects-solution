@@ -37,7 +37,7 @@ class LocationResource(Resource):
         location: Location = LocationService.retrieve(location_id)
         return location
 
-"""
+""" Routes which are no longer needed are commented out.
 @api.route("/persons")
 class PersonsResource(Resource):
     @accepts(schema=PersonSchema)
