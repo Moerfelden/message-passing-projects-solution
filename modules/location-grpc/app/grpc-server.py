@@ -50,7 +50,7 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         print("Finished retrieving the location from DB:")
         print(location)
 
-        return locations_pb2.LocationMessage(**location)				
+        return location_pb2.LocationMessage(**location)				
 
 
     def Create(self, request, context):
