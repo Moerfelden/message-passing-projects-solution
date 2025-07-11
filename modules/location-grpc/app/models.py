@@ -11,6 +11,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_property
 
 base = declarative_base()
+# Note: class Person is needed as it is used in class Location: ForeignKey(Person.id)
 
 class Person(Base):
     __tablename__ = "person"
