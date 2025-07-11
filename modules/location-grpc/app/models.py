@@ -13,7 +13,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 base = declarative_base()
 # Note: class Person is needed as it is used in class Location: ForeignKey(Person.id)
 
-class Person(Base):
+class Person(base):
     __tablename__ = "person"
 
     id = Column(Integer, primary_key=True)
