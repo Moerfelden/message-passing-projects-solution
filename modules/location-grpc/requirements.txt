@@ -11,5 +11,5 @@ psycopg2-binary==2.9.10
 setuptools==75.5.0
 shapely==1.7.1
 six==1.16.0
-sqlalchemy==2.0.36
+sqlalchemy==1.4.54
 typing-extensions==4.12.2
