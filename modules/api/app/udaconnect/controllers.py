@@ -16,9 +16,9 @@ DATE_FORMAT = "%Y-%m-%d"
 
 api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
 
-
 # TODO: This needs better exception handling
 
+""" Routes which are no longer needed are commented out.
 
 @api.route("/locations")
 class LocationResource(Resource):
@@ -37,7 +37,7 @@ class LocationResource(Resource):
         location: Location = LocationService.retrieve(location_id)
         return location
 
-""" Routes which are no longer needed are commented out.
+
 @api.route("/persons")
 class PersonsResource(Resource):
     @accepts(schema=PersonSchema)
