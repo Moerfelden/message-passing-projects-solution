@@ -46,11 +46,12 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
 
         # Rely on database to return text form of point to reduce overhead of conversion in app code
         location.wkt_shape = coord_text
-
+        # Convert location to a dictionary
+        location_dict = location.__dict__
         print("Finished retrieving the location from DB:")
-        print(location)
-
-        return location_pb2.LocationMessage(**location)				
+        print(location_dict)
+   
+        return location_pb2.LocationMessage(**location_dict)				
 
 
     def Create(self, request, context):
