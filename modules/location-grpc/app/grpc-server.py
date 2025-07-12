@@ -34,7 +34,7 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         }
 
         retrieve_request = location_pb2.RetrieveLocation(**request_value)  		       
-        print("The grpc server received the following protobuf message:")
+        print("The grpc server received the following protobuf get location message:")
         print(retrieve_request)
 
         with Session() as session:
@@ -66,7 +66,7 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         }
 
         create_request = location_pb2.LocationMessage(**request_value)       
-        print("The grpc server received the following protobuf message:")
+        print("The grpc server received the following protobuf create location message:")
         print(create_request)
 
         #DB prep and commits
