@@ -47,7 +47,7 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         location_dict = {
             "id": location.id,
             "person_id": location.person_id,
-            "creation_time": location.creation_time,
+            "creation_time": location.creation_time.strftime('%Y-%m-%d %H:%M:%S'),
             "latitude": location.latitude,
             "longitude": location.longitude
         }
