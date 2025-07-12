@@ -14,7 +14,8 @@ def retrieve_location():
 
         request = location_pb2.RetrieveLocation(id=30)
         response = stub.Get(request)
-        print("Location retrieved. Response: ", response)
+        print("Location retrieved. Response:")
+        print(response)
 
 
 def create_location():
@@ -23,13 +24,14 @@ def create_location():
         
         request = location_pb2.LocationMessage(
            person_id=5,
-           creation_time="2025-07-03T20:36:57Z",
+           creation_time="2025-07-03 20:36:57",
            latitude="29.938632",
            longitude="-90.119941"
         )
 
         response = stub.Create(request)    
-        print("Location created. Response: ", response)
+        print("Location created. Response:")
+        print(response)
 
 
 if __name__ == "__main__":
