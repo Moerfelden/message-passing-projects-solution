@@ -6,7 +6,7 @@ import os
 import time
 from concurrent import futures
 from datetime import datetime, timedelta
-from geoalchemy2.functions import ST_AsText, ST_Point
+from geoalchemy2.functions import ST_Point
 from models import Location
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -38,16 +38,19 @@ class LocationServicer(location_pb2_grpc.LocationServiceServicer):
         print(retrieve_request)
 
         with Session() as session:
-            location, coord_text = (
-                session.query(Location, Location.coordinate.ST_AsText())
+            location = (
+                session.query(Location)
                 .filter(Location.id == request.id)
                 .one()
             )
 
-        # Rely on database to return text form of point to reduce overhead of conversion in app code
-        location.wkt_shape = coord_text
-        # Convert location to a dictionary
-        location_dict = location.__dict__
+        location_dict = {
+            "id": location.id,
+            "person_id": location.person_id,
+            "creation_time": location.creation_time,
+            "latitude": location.latitude,
+            "longitude": location.longitude
+        }
         print("Finished retrieving the location from DB:")
         print(location_dict)
    
