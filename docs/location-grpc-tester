@@ -1,8 +1,8 @@
 import logging
 import grpc
 
-import location_pb2
-import location_pb2_grpc
+import ./modules/location-grpc/app/location_pb2
+import ./modules/location-grpc/app/location_pb2_grpc
 
 """
 Sample implementation of a writer that can be used to send protobuf messages to the gRPC server.
