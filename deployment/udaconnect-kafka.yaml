@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    service: kafka-service
-  name: kafka-service
+    service: udaconnect-kafka
+  name: udaconnect-kafka
 spec:
   type: ClusterIP
   selector:
-    service: kafka-service
+    service: udaconnect-kafka
   ports:
     - name: '9092'
       protocol: TCP
@@ -22,21 +22,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: kafka-service
-  name: kafka-service
+    service: udaconnect-kafka
+  name: udaconnect-kafka
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: kafka-service
+      service: udaconnect-kafka
   template:
     metadata:
       labels:
-        service: kafka-service
+        service: udaconnect-kafka
     spec:
       containers:
         - image: docker.io/bitnami/kafka:4.0
-          name: kafka-service
+          name: udaconnect-kafka
           imagePullPolicy: Always
           ports:
             - containerPort: 9092
