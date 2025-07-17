@@ -1,9 +1,16 @@
 import json
 import logging
 import os
+import sys
 from app.udaconnect.schemas import LocationSchema
-from kafka import KafkaProducer
 from typing import Dict
+
+# Note: the following lines were inserted to avoid the following python 3.12 issue:
+# ModuleNotFoundError: No module named 'kafka.vendor.six.moves'
+if sys.version_info >= (3, 12, 0):
+    import six
+    sys.modules["kafka.vendor.six.moves"] = six.moves
+from kafka import KafkaProducer
 
 TOPIC_LOCATION = os.environ["TOPIC_LOCATION"]
 KAFKA_SERVER = os.environ["KAFKA_SERVER"]
