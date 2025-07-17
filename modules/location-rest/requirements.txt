@@ -19,7 +19,6 @@ psycopg2-binary==2.9.10
 pytz==2024.2
 referencing==0.35.1
 rpds-py==0.21.0
-shapely==1.7.1
 six==1.16.0
 typing-extensions==4.12.2
 werkzeug==3.1.3
