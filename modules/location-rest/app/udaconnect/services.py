@@ -5,7 +5,7 @@ import sys
 from app.udaconnect.schemas import LocationSchema
 from typing import Dict
 
-# Note: the following lines were inserted to avoid the following python 3.12 issue:
+# Note: the next lines were inserted to avoid the following python 3.12 issue:
 # ModuleNotFoundError: No module named 'kafka.vendor.six.moves'
 if sys.version_info >= (3, 12, 0):
     import six
