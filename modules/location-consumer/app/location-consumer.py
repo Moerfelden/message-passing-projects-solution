@@ -28,7 +28,7 @@ Session.configure(bind=engine)
 logging.basicConfig(level=logging.WARNING)
 logging.getLogger("location-consumer")
 
-def create_location(location)
+def create_location(location):
     request_value = {
         "person_id": int(location["person_id"]),
         "creation_time": str(location["creation_time"]),
