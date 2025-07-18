@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5005
 
 COPY . .
-CMD ["python", "-u", "app/grpc-server.py"]
+CMD ["python", "-u", "app/location-grpc-server.py"]
