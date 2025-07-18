@@ -3,12 +3,18 @@ import logging
 import os
 from concurrent import futures
 from geoalchemy2.functions import ST_Point
-from kafka import KafkaConsumer
 from models import Location
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import text
 from typing import Dict, List
+
+# Note: the next lines were inserted to avoid the following python 3.12 issue:
+# ModuleNotFoundError: No module named 'kafka.vendor.six.moves'
+if sys.version_info >= (3, 12, 0):
+    import six
+    sys.modules["kafka.vendor.six.moves"] = six.moves
+from kafka import KafkaConsumer
 
 TOPIC_LOCATION = os.environ["TOPIC_LOCATION"]
 KAFKA_SERVER = os.environ["KAFKA_SERVER"]
