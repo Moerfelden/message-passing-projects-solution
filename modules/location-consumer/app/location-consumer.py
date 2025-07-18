@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import sys
 from concurrent import futures
 from geoalchemy2.functions import ST_Point
 from models import Location
