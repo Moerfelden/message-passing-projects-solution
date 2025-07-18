@@ -15,15 +15,19 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-@api.route("/locations")
+@api.route("/locations", methods=['POST'])
 class LocationResource(Resource):
     @accepts(schema=LocationSchema)
     def post(self):
-        try:
-            payload = request.get_json()
-            logger.info(f"{datetime.now()} A new location is sent to the Kafka broker: {payload}")     
-            LocationService.create(payload)
-        except:
-            logger.error(f"{datetime.now()} An issue occurred sending this new location to the Kafka broker: {payload}")     
-            Response(status=400)
-        return Response(status=202)
+        if request.method == 'POST':
+            try:
+                payload = request.get_json()
+                logger.info(f"{datetime.now()} A new location is sent to the Kafka broker: {payload}")     
+                LocationService.create(payload)
+            except:
+                logger.error(f"{datetime.now()} An issue occurred sending this new location to the Kafka broker: {payload}")     
+                Response(status=400)
+            return Response(status=202)
+        else:
+            raise Exception('Unsupported HTTP request type.')
+
