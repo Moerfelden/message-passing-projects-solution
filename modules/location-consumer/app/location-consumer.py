@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 from concurrent import futures
+from datetime import datetime
 from geoalchemy2.functions import ST_Point
 from models import Location
 from sqlalchemy import create_engine
@@ -32,7 +33,7 @@ Session = sessionmaker()
 engine = create_engine(f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
 Session.configure(bind=engine)
 
-logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.INFO)
 logging.getLogger("location-consumer")
 
 def create_location(location):
@@ -42,9 +43,8 @@ def create_location(location):
         "latitude": str(location["latitude"]),
         "longitude": str(location["longitude"])
     }
-     
-    print("The location-consumer received the following create location message:")
-    print(request_value)
+    
+    logger.info(f"{datetime.now()} The location-consumer received the following create location message: {request_value}")   
 
     #DB prep and commits
     new_location = Location()
@@ -68,3 +68,4 @@ def consume_message():
 
 if __name__ == "__main__":
     consume_message()
+    
