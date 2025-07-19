@@ -27,7 +27,7 @@ class LocationResource(Resource):
             except:
                 logger.error(f"{datetime.now()} An issue occurred sending this new location to the Kafka broker: {payload}")     
                 Response(status=400)
-            return Response(status=202)
+            else: return Response(status=202)
         else:
             raise Exception('Unsupported HTTP request type.')
 
