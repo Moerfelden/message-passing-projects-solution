@@ -12,8 +12,8 @@ api = Namespace("UdaConnect", description="Connections via geolocation.")  # noq
 
 # TODO: This needs better exception handling
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
+logging.basicConfig(level=logging.INFO)
+logging.getLogger("location-rest")
 
 @api.route("/locations", methods=['POST'])
 class LocationResource(Resource):
