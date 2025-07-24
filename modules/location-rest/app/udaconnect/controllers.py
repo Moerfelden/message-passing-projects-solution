@@ -23,9 +23,9 @@ class LocationResource(Resource):
                 payload = request.get_json()
                 logger.info(f"{datetime.now()} A new location is sent to the Kafka broker: {payload}")     
                 LocationService.create(payload)
-                return Response(status=202)
+                return Response('Accepted', status=202)
             except Exception as e:
                 logger.error(f"{datetime.now()} An issue occurred sending this new location to the Kafka broker: {payload}, Error: {e}")     
-                return Response(status=400)
+                return Response('Bad Request', status=400)
         else:
             raise Exception('Unsupported HTTP request type.')
