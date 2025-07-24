@@ -1,0 +1,169 @@
+{
+	"id": "b5ecf469-180d-46f3-902f-5edeba608071",
+	"uid": "0-b5ecf469-180d-46f3-902f-5edeba608071",
+	"name": "Udaconnect",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"e6cc67ea-89bd-4f19-940d-d6df906721e2",
+		"047f71f9-eea4-4c75-a698-758e6d1c7a8f",
+		"7ee80b2f-b836-4b3f-883f-014db27ecbff",
+		"2dc13622-40bf-4da2-bf44-4754438ff137",
+		"6ac20c23-d61c-4124-b8a7-f806b74881d9"
+	],
+	"folders_order": [],
+	"protocolProfileBehavior": {},
+	"createdAt": "2025-07-19T16:40:18.445Z",
+	"folders": [],
+	"requests": [
+		{
+			"id": "047f71f9-eea4-4c75-a698-758e6d1c7a8f",
+			"uid": "0-047f71f9-eea4-4c75-a698-758e6d1c7a8f",
+			"name": "Create a person /api/persons",
+			"url": "http://localhost:30002/api/persons",
+			"description": null,
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"responses_order": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "b5ecf469-180d-46f3-902f-5edeba608071",
+			"rawModeData": "{\n    \"first_name\": \"Yoram\",\n    \"last_name\": \"Sternhagel\",\n    \"company_name\":\"Durban Trust\"\n}",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "2dc13622-40bf-4da2-bf44-4754438ff137",
+			"uid": "0-2dc13622-40bf-4da2-bf44-4754438ff137",
+			"name": "Get connections for a person /api​/persons​/{person_id}​/connection",
+			"url": "http://localhost:30003/api/persons/5/connection?distance=5&end_date=2020-07-08&start_date=2020-07-06",
+			"description": null,
+			"data": null,
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [
+				{
+					"key": "distance",
+					"value": "5",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "end_date",
+					"value": "2020-07-08",
+					"equals": true
+				},
+				{
+					"key": "start_date",
+					"value": "2020-07-06",
+					"equals": true
+				}
+			],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"responses_order": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "b5ecf469-180d-46f3-902f-5edeba608071",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "6ac20c23-d61c-4124-b8a7-f806b74881d9",
+			"uid": "0-6ac20c23-d61c-4124-b8a7-f806b74881d9",
+			"name": "Get all persons /api/persons",
+			"url": "http://localhost:30002/api/persons",
+			"description": null,
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"responses_order": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "b5ecf469-180d-46f3-902f-5edeba608071",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "7ee80b2f-b836-4b3f-883f-014db27ecbff",
+			"uid": "0-7ee80b2f-b836-4b3f-883f-014db27ecbff",
+			"name": "Get a person /api/persons/{person_id}",
+			"url": "http://localhost:30002/api/persons/5",
+			"description": null,
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"responses_order": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "b5ecf469-180d-46f3-902f-5edeba608071",
+			"headers": "",
+			"pathVariables": {}
+		},
+		{
+			"id": "e6cc67ea-89bd-4f19-940d-d6df906721e2",
+			"uid": "0-e6cc67ea-89bd-4f19-940d-d6df906721e2",
+			"name": "Create a location /api/locations",
+			"url": "http://localhost:30005/api/locations",
+			"description": null,
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": [],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": null,
+			"folder": null,
+			"responses_order": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"collectionId": "b5ecf469-180d-46f3-902f-5edeba608071",
+			"rawModeData": "{\n  \"person_id\": 9,\n  \"longitude\": \"37.55363\",\n  \"latitude\": \"-122.290883\",\n  \"creation_time\": \"2020-08-15 10:37:06.000000\"\n}",
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
