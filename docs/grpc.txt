@@ -1,0 +1,13 @@
+gRPC
+====
+My service location-grpc is listening on nodeport 30004.
+It allows an external client, e.g. a mobile application, not only to retrieve a location by id, but also to create a new location.
+The proto file is available via the following path: /modules/location-grpc/location.proto.
+
+A Python script, called location-grpc-tester.py, serves as a sample gRPC client.
+It can be used to test location retrieval and location creation.
+
+Usage instructions:
+- Install grpcio and protobuf if you have not already done so.
+- Move to folder modules/location-grpc/app.
+- Run this command: python3 location-grpc-tester.py
