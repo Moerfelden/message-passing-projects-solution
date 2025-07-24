@@ -17,7 +17,7 @@ producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
 
 import logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("udaconnect-api")
+logger = logging.getLogger("location-rest")
 
 class LocationService:
     @staticmethod
