@@ -1,5 +1,4 @@
 import json
-import logging
 import os
 import sys
 from app.udaconnect.schemas import LocationSchema
@@ -16,7 +15,8 @@ TOPIC_LOCATION = os.environ["TOPIC_LOCATION"]
 KAFKA_SERVER = os.environ["KAFKA_SERVER"]
 producer = KafkaProducer(bootstrap_servers=KAFKA_SERVER)
 
-logging.basicConfig(level=logging.WARNING)
+import logging
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("udaconnect-api")
 
 class LocationService:
