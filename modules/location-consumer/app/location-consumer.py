@@ -34,7 +34,7 @@ engine = create_engine(f"postgresql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_
 Session.configure(bind=engine)
 
 logging.basicConfig(level=logging.INFO)
-logging.getLogger("location-consumer")
+logger = logging.getLogger("location-consumer")
 
 def create_location(location):
     request_value = {
