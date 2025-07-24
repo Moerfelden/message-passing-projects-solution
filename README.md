@@ -14,7 +14,7 @@ To do so, ***you will refactor this application into a microservice architecture
 The Udaconnect application has undergone a significant transformation, evolving from a monolithic architecture to a microservice-based framework. To enhance usability and meet business requirements, we have integrated a variety of message-passing strategies, including REST, gRPC, and a Kafka broker. These technologies empower the Minimum Viable Product (MVP) to effectively manage the anticipated influx of location data.
 
 ### Architectural Diagram
-https://github.com/Moerfelden/message-passing-projects-solution/docs/architecture_design.png
+https://github.com/Moerfelden/message-passing-projects-solution/blob/master/docs/architecture_design.png
 
 ### Technologies
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - API webserver
