@@ -10,6 +10,12 @@ Management loved the POC so now that there is buy-in, we want to enhance this ap
 
 To do so, ***you will refactor this application into a microservice architecture using message passing techniques that you have learned in this course***. It’s easy to get lost in the countless optimizations and changes that can be made: your priority should be to approach the task as an architect and refactor the application into microservices. File organization, code linting -- these are important but don’t affect the core functionality and can possibly be tagged as TODO’s for now!
 
+### Solution
+The Udaconnect application has undergone a significant transformation, evolving from a monolithic architecture to a microservice-based framework. To enhance usability and meet business requirements, we have integrated a variety of message-passing strategies, including REST, gRPC, and a Kafka broker. These technologies empower the Minimum Viable Product (MVP) to effectively manage the anticipated influx of location data.
+
+### Architectural Diagram
+https://github.com/Moerfelden/message-passing-projects-solution/docs/architecture_design.png
+
 ### Technologies
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - API webserver
 * [SQLAlchemy](https://www.sqlalchemy.org/) - Database ORM
