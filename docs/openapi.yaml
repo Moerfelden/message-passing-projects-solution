@@ -1,0 +1,185 @@
+openapi: 3.0.0
+info:
+  title: UdaConnect API
+  description: This API identifies individuals who have shared close geographic proximity
+  version: 1.0.0
+paths:
+  /api/persons:
+    get:
+      summary: Retrieves all person records
+      description: Retrieves all the persons that are registered.
+      operationId: getAllPersons
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Person'
+        "400":
+          description: Bad input parameter
+    post:
+      summary: Adds a person record
+      description: Creates a new person in the database
+      operationId: createPerson
+      requestBody:
+        description: Person that is to be created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+        required: true
+      responses:
+        "201":
+          description: Person successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        "400":
+          description: Bad input parameter
+  /api/persons/{person_id}:
+    get:
+      summary: Retrieves a person record by id
+      description: Returns a single person record via unique id
+      operationId: getPersonById
+      parameters:
+      - name: person_id
+        in: path
+        description: Unique ID for a given Person
+        required: true
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        "400":
+          description: Bad input parameter
+  /api/locations:
+    post:
+      summary: Adds a location record
+      description: Creates a new location in the database
+      operationId: createLocation
+      requestBody:
+        description: Location that is to be created
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+        required: true
+      responses:
+        "202":
+          description: Accepted: New location is sent to kafka broker
+        "400":
+          description: Bad input parameter
+  /api/persons/{person_id}/connection:
+    get:
+      summary: Retrieves connections by person id
+      description: Returns an array of connections
+      operationId: getConnections
+      parameters:
+      - name: person_id
+        in: path
+        description: Unique ID for a given Person
+        required: true
+        explode: false
+        schema:
+          type: integer
+          format: int64
+      - name: start_date
+        in: query
+        description: Lower bound of date range
+        required: true
+        explode: false
+        schema:
+          type: string
+          format: date-time
+      - name: end_date
+        in: query
+        description: Upper bound of date range
+        required: true
+        explode: false
+        schema:
+          type: string
+          format: date-time
+      - name: distance
+        in: query
+        description: Proximity to a given user in meters
+        required: true
+        explode: false
+        schema:
+          type: integer
+          format: int64
+        default: 5
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Connection'
+        "400":
+          description: Bad input parameter
+components:
+  schemas:
+    Person:
+      required:
+      - company_name
+      - first_name
+      - last_name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 5
+        first_name:
+          type: string
+          example: Yoram
+        last_name:
+          type: string
+          example: Sternhagel
+        company_name:
+          type: string
+          example: Durban Trust
+    Location:
+      required:
+      - person_id
+      - longitude
+      - latitude
+      - creation_time
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 3
+        person_id:
+          type: integer
+          format: int64
+          example: 5
+        longitude:
+          type: string
+          example: -90.119941
+        latitude:
+          type: string
+          example: 29.938632
+        creation_time:
+          type: string
+          format: date-time
+          example: 2025-07-03 20:36:57
+    Connection:
+      type: object
+      properties:
+        person:
+          $ref: '#/components/schemas/Person'    
+        location:
+          $ref: '#/components/schemas/Location'      
