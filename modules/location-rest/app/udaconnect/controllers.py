@@ -1,4 +1,3 @@
-import logging
 from app.udaconnect.schemas import LocationSchema
 from app.udaconnect.services import LocationService
 from datetime import datetime
@@ -9,12 +8,13 @@ from typing import Optional, List
 
 api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
 
-# TODO: This needs better exception handling
-
+import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("location-rest")
 
-@api.route("/locations", methods=['POST'])
+# TODO: This needs better exception handling
+
+@api.route("/locations")
 class LocationResource(Resource):
     @accepts(schema=LocationSchema)
     def post(self):
@@ -23,10 +23,9 @@ class LocationResource(Resource):
                 payload = request.get_json()
                 logger.info(f"{datetime.now()} A new location is sent to the Kafka broker: {payload}")     
                 LocationService.create(payload)
-            except:
-                logger.error(f"{datetime.now()} An issue occurred sending this new location to the Kafka broker: {payload}")     
-                Response(status=400)
-            else: return Response(status=202)
+                return Response(status=202)
+            except Exception as e:
+                logger.error(f"{datetime.now()} An issue occurred sending this new location to the Kafka broker: {payload}, Error: {e}")     
+                return Response(status=400)
         else:
             raise Exception('Unsupported HTTP request type.')
-
