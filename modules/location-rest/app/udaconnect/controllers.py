@@ -9,11 +9,10 @@ from typing import Optional, List
 
 api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
 
-
 # TODO: This needs better exception handling
 
 logging.basicConfig(level=logging.INFO)
-logging.getLogger("location-rest")
+logger = logging.getLogger("location-rest")
 
 @api.route("/locations", methods=['POST'])
 class LocationResource(Resource):
