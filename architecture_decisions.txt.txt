@@ -1,0 +1,11 @@
+Refactoring Decisions and Justifications:
+
+• The Udaconnect application has undergone a significant transformation, evolving from a monolithic architecture to a microservice-based framework. To enhance usability and meet business requirements, we have integrated a variety of message-passing strategies, including REST, gRPC, and a Kafka broker. These technologies empower the Minimum Viable Product (MVP) to effectively manage the anticipated influx of location data.
+
+• Both the person-api microservice and the connection-api microservice have been designed as RESTful APIs that communicate via HTTP requests. This widely adopted message-passing technique within the industry facilitates seamless integration and maintenance for developers, ensuring a robust and flexible service architecture.
+
+• The location-rest microservice serves as a REST API specifically engineered to ingest substantial volumes of location data in the form of user coordinates collected from mobile devices. Functioning as a producer, this service transmits location data to Kafka, where it is stored in the 'create_location_events' topic for subsequent processing. Kafka's architecture guarantees high reliability, ensuring that the considerable volume of concurrently arriving location messages is processed with minimal risk of data loss.
+
+• Kafka further enhances the system by enabling asynchronous handling of location creation requests. This capability alleviates the burden on downstream services and allows for a controlled and efficient feeding of data into the database. The location-consumer microservice is tasked with monitoring the arrival of location events and retrieving data from the 'create_location_events' topic, ultimately responsible for storing this information in the PostgreSQL database.
+
+• Complementing the location-rest microservice, we also provide the location-grpc microservice. The gRPC message-passing technique is particularly advantageous due to its ability to deliver enhanced performance, security, and stringent type enforcement on transmitted messages. By utilizing a binary protocol based on HTTP/2, processing speed is significantly increased, making it an ideal solution for mobile applications that require high throughput.
