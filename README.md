@@ -116,6 +116,18 @@ You may notice the odd port numbers being served to `localhost`. [By default, Ku
 
 Connections to the Kubernetes services have been set up through a [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport). (While we would use a technology like an [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) to expose our Kubernetes services in deployment, a NodePort will suffice for development.)
 
+#### REST testing via command line curl
+* `GET  /api/persons`
+  curl -X GET 'http://localhost:30002/api/persons' -H 'accept: application/json'
+* `POST /api/persons`  
+  curl -X POST 'http://localhost:30002/api/persons' -H 'Content-Type: application/json' -d '{"first_name": "Yoram", "last_name": "Sternhagel", "company_name": "Durban Trust"}'
+* `GET  /api/persons/{person_id}`  
+  curl -X GET "http://localhost:30002/api/persons/5" -H "accept: application/json"
+* `GET  /api/persons/{person_id}/connection`  
+  curl -X GET "http://localhost:30003/api/persons/5/connection?distance=5&end_date=2020-07-08&start_date=2020-07-06" -H  "accept: application/json"
+* `POST /api/locations`
+  curl -X POST 'http://localhost:30005/api/locations' -H 'Content-Type: application/json' -d '{"person_id": 9, "longitude": "37.55363", "latitude": "-122.290883", "creation_time": "2020-08-15 10:37:06.000000"}' 
+
 ## Development
 ### New Services
 New services can be created inside of the `modules/` subfolder. You can choose to write something new with Flask, copy and rework the `modules/api` service into something new, or just create a very simple Python application.
