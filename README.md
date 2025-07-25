@@ -130,9 +130,9 @@ Connections to the Kubernetes services have been set up through a [NodePort](htt
 
 #### Testing the location-gRPC service via sample gRPC client
 A Python script, called location-grpc-tester.py, serves as a sample gRPC client. It can be used to test location retrieval and location creation. Usage instructions:
-- Install grpcio and protobuf if you have not already done so.
-- Move to folder modules/location-grpc/app.
-- Run this command: python3 location-grpc-tester.py
+* Install grpcio and protobuf if you have not already done so.
+* Move to folder modules/location-grpc/app.
+* Run this command: python3 location-grpc-tester.py
 
 ## Development
 ### New Services
@@ -145,7 +145,7 @@ As a reminder, each module should have:
 4. `__init__.py`
 
 ### Docker Images
-`udaconnect-app` and `udaconnect-api` use docker images from `udacity/nd064-udaconnect-app` and `udacity/nd064-udaconnect-api`. To make changes to the application, build your own Docker image and push it to your own DockerHub repository. Replace the existing container registry path with your own.
+I replaced the original container registry path with my own: I made changes to the application, built my own Docker images and pushed them to my DockerHub repository. 
 
 ## Configs and Secrets
 In `deployment/db-secret.yaml`, the secret variable is `d293aW1zb3NlY3VyZQ==`. The value is simply encoded and not encrypted -- this is ***not*** secure! Anyone can decode it to see what it is.
