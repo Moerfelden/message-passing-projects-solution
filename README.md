@@ -101,13 +101,13 @@ Once the project is up and running, you should be able to see 8 deployments and 
 
 These pages should also load on your web browser:
 * `http://localhost:30000/` - Frontend ReactJS Application
-* `http://localhost:30002/` - OpenAPI Documentation for person API:
+* `http://localhost:30002/` - OpenAPI Documentation for person API:  
   `GET  /api/persons`, `POST /api/persons`, `GET  /api/persons/{person_id}`
 * `http://localhost:30002/api/` - Base path for person API
-* `http://localhost:30003/` - OpenAPI Documentation for connection API:
+* `http://localhost:30003/` - OpenAPI Documentation for connection API:  
   `GET  /api/persons/{person_id}/connection`
 * `http://localhost:30003/api/` - Base path for connection API
-* `http://localhost:30005/` - OpenAPI Documentation for location-rest API:
+* `http://localhost:30005/` - OpenAPI Documentation for location-rest API:  
   `POST /api/locations`
 * `http://localhost:30005/api/` - Base path for location-rest API
 
