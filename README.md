@@ -97,9 +97,7 @@ Manually applying each of the individual `yaml` files is cumbersome but going th
 Note: The first time you run this project, you will need to seed the database with dummy data. Use the command `sh scripts/run_db_command.sh <POD_NAME>` against the `postgres` pod. (`kubectl get pods` will give you the `POD_NAME`). Subsequent runs of `kubectl apply` for making changes to deployments or services shouldn't require you to seed the database again!
 
 ### Verifying it Works
-Once the project is up and running, you should be able to see 3 deployments and 3 services in Kubernetes:
-`kubectl get pods` and `kubectl get services` - should both return `udaconnect-app`, `udaconnect-api`, and `postgres`
-
+Once the project is up and running, you should be able to see 8 deployments and 8 services in Kubernetes: `kubectl get pods` and `kubectl get services` - should both return `postgres`, `udaconnect-app`, `udaconnect-connection-api`, `udaconnect-kafka`, `udaconnect-location-consumer`, `udaconnect-location-grpc`, `udaconnect-location-rest` and `udaconnect-person-api`.
 
 These pages should also load on your web browser:
 * `http://localhost:30001/` - OpenAPI Documentation
