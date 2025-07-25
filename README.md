@@ -100,9 +100,16 @@ Note: The first time you run this project, you will need to seed the database wi
 Once the project is up and running, you should be able to see 8 deployments and 8 services in Kubernetes: `kubectl get pods` and `kubectl get services` - should both return `postgres`, `udaconnect-app`, `udaconnect-connection-api`, `udaconnect-kafka`, `udaconnect-location-consumer`, `udaconnect-location-grpc`, `udaconnect-location-rest` and `udaconnect-person-api`.
 
 These pages should also load on your web browser:
-* `http://localhost:30001/` - OpenAPI Documentation
-* `http://localhost:30001/api/` - Base path for API
 * `http://localhost:30000/` - Frontend ReactJS Application
+* `http://localhost:30002/` - OpenAPI Documentation for person API:
+  'GET  /api/persons', 'POST /api/persons', 'GET  /api/persons/{person_id}'
+* `http://localhost:30002/api/` - Base path for person API
+* `http://localhost:30003/` - OpenAPI Documentation for connection API:
+  'GET  /api/persons/{person_id}/connection'
+* `http://localhost:30003/api/` - Base path for connection API
+* `http://localhost:30005/` - OpenAPI Documentation for location-rest API:
+  'POST /api/locations'
+* `http://localhost:30005/api/` - Base path for location-rest API
 
 #### Deployment Note
 You may notice the odd port numbers being served to `localhost`. [By default, Kubernetes services are only exposed to one another in an internal network](https://kubernetes.io/docs/concepts/services-networking/service/). This means that `udaconnect-app` and `udaconnect-api` can talk to one another. For us to connect to the cluster as an "outsider", we need to a way to expose these services to `localhost`.
