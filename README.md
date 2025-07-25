@@ -120,7 +120,7 @@ Connections to the Kubernetes services have been set up through a [NodePort](htt
 * GET  /api/persons  
   `curl -X GET 'http://localhost:30002/api/persons' -H 'accept: application/json'`
 * POST /api/persons  
-  `curl -X POST 'http://localhost:30002/api/persons' -H 'Content-Type: application/json' -d '{"first_name": "Yoram", "last_name": "Sternhagel", "company_name": "Durban Trust"}'
+  `curl -X POST 'http://localhost:30002/api/persons' -H 'Content-Type: application/json' -d '{"first_name": "Yoram", "last_name": "Sternhagel", "company_name": "Durban Trust"}'`
 * GET  /api/persons/{person_id}  
   `curl -X GET "http://localhost:30002/api/persons/5" -H "accept: application/json"`
 * GET  /api/persons/{person_id}/connection  
